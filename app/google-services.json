@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "147515807857",
+    "firebase_url": "https://bookclub-iitism.firebaseio.com",
+    "project_id": "bookclub-iitism",
+    "storage_bucket": "bookclub-iitism.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147515807857:android:17a02b7f17b6ea8a",
+        "android_client_info": {
+          "package_name": "com.iitism.bookclub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147515807857-ckdfjvv674fq4ne8dtg5mcqvknj0bucm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARSXgxk6bXFeykUn0dqeIGrXg0QZmg_xU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
