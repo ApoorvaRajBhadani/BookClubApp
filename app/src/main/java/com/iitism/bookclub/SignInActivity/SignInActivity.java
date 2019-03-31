@@ -1,15 +1,22 @@
-package com.iitism.bookclub;
+package com.iitism.bookclub.SignInActivity;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.iitism.bookclub.R;
+import com.iitism.bookclub.SignUpActivity.SignUp_Page;
 
 import java.util.regex.Pattern;
 
-public class SignInActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity
+{
 
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
@@ -25,13 +32,22 @@ public class SignInActivity extends AppCompatActivity {
     private TextInputLayout email;
     private TextInputLayout password;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         email =  findViewById(R.id.login_email);
         password = findViewById(R.id.login_password);
         email.setHint("Enter Email");
         password.setHint("Enter Password");
+        TextView b1=findViewById(R.id.signin_signup);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(SignInActivity.this, SignUp_Page.class));
+            }
+        });
 
     }
     private boolean validateEmail() {
