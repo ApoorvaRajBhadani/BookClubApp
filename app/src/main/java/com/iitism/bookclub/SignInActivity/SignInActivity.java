@@ -1,6 +1,7 @@
 package com.iitism.bookclub.SignInActivity;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.iitism.bookclub.R;
 import com.iitism.bookclub.SignUpActivity.SignUp_Page;
 
@@ -17,8 +23,9 @@ import java.util.regex.Pattern;
 
 public class SignInActivity extends AppCompatActivity
 {
-
-    private static final Pattern PASSWORD_PATTERN =
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+ /*   private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
                     //"(?=.*[0-9])" +         //at least 1 digit
                     //"(?=.*[a-z])" +         //at least 1 lower case letter
@@ -28,15 +35,18 @@ public class SignInActivity extends AppCompatActivity
                     "(?=\\S+$)" +           //no white spaces
                     ".{4,}" +               //at least 4 characters
                     "$");
-
+*/
     private TextInputLayout email;
-    private TextInputLayout password;
+    private TextInputLayout password;Button login;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        firebaseAuth=FirebaseAuth.getInstance();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         email =  findViewById(R.id.login_email);
+        login=findViewById(R.id.login);
         password = findViewById(R.id.login_password);
         email.setHint("Enter Email");
         password.setHint("Enter Password");
@@ -49,7 +59,34 @@ public class SignInActivity extends AppCompatActivity
             }
         });
 
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginUser();
+            }
+        });
+
+
     }
+
+    private void loginUser()
+    {
+        String emailinput=email.getEditText().getText().toString().trim();
+        String passwordInput=password.getEditText().getText().toString().trim();
+        firebaseAuth.signInWithEmailAndPassword(emailinput,passwordInput)
+        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful())
+                    Toast.makeText(SignInActivity.this,"LoggedIn Successfully",Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(SignInActivity.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
+    /*
     private boolean validateEmail() {
         String emailInput = email.getEditText().getText().toString().trim();
 
@@ -88,5 +125,5 @@ public class SignInActivity extends AppCompatActivity
         input += "Password: " + password.getEditText().getText().toString();
 
         Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
-    }
+    }*/
 }
