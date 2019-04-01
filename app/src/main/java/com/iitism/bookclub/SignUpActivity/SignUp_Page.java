@@ -112,7 +112,7 @@ public class SignUp_Page extends AppCompatActivity
     void authenticate()
     {
         firebaseAuth=FirebaseAuth.getInstance();
-        firebaseAuth.createUserWithEmailAndPassword(details[3],details[1]).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        firebaseAuth.createUserWithEmailAndPassword(details[3].trim(),details[1].trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task)
             {
