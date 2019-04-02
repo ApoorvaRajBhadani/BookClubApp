@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.iitism.bookclub.MainActivity;
 import com.iitism.bookclub.R;
 import com.iitism.bookclub.SignUpActivity.SignUp_Page;
 
@@ -136,6 +137,7 @@ public class SignInActivity extends AppCompatActivity
                                 if(task.isSuccessful())
                                 {
                                     Toast.makeText(SignInActivity.this,"Logged In",Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(SignInActivity.this, MainActivity.class));
                                 }
                                 else
                                     Toast.makeText(SignInActivity.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
@@ -156,9 +158,10 @@ public class SignInActivity extends AppCompatActivity
         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful())
-                    Toast.makeText(SignInActivity.this,"LoggedIn Successfully",Toast.LENGTH_SHORT).show();
-                else
+                if(task.isSuccessful()) {
+                    Toast.makeText(SignInActivity.this, "LoggedIn Successfully", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                }else
                     Toast.makeText(SignInActivity.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
 
             }
