@@ -73,7 +73,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="Year:"
+                android:text="Adm No:"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -90,11 +90,13 @@
             <TextView
                 android:id="@+id/year"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="109dp"
                 android:layout_marginBottom="8dp"
                 android:text="45645"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/branch"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -116,7 +118,6 @@
                 android:text="Rowan Atkinson"
                 app:layout_constraintBottom_toTopOf="@+id/year"
                 app:layout_constraintStart_toStartOf="@+id/branch" />
-
             <TextView
                 android:id="@+id/no_of_books_issued_head"
                 android:layout_width="wrap_content"
